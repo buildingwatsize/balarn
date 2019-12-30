@@ -16,7 +16,6 @@ for the pouch, the bank account, and also everyday wallet. This project will mak
 
 ```mermaid
 graph LR;
-  
   Balarn --> Balarn-backend;
   Balarn-backend --> Balarn;
   Balarn-backend -->|JWT| PassportJS;
@@ -26,6 +25,8 @@ graph LR;
   Sequelize --> MySQL;
   MySQL --> Sequelize;
 ```
+
+![Mermaid Diagram](./mermaid-diagram.svg)
 
 ## 📋 Features
 
