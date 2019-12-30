@@ -39,7 +39,7 @@ graph LR;
 
 ## 🏷 Versioning
 
-- Current Version: 0.1.0
+- Current Version: 0.1.1
 - For the versions available, see the [tags on this repository.](https://github.com/buildingwatsize/balarn/tags)
 
 ## 💡 Getting Started
