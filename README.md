@@ -38,7 +38,7 @@ graph LR;
 - Wallet Dashboard. `[Coming Soon!]`
 - Role managements. `[Coming Soon!]`
 
-## 🏷 Versioning
+## 🏷 Version
 
 - Current Version: 0.1.1
 - For the versions available, see the [tags on this repository.](https://github.com/buildingwatsize/balarn/tags)
@@ -63,7 +63,7 @@ graph LR;
 
 3️⃣ Enjoy with :D
 
-## 📚 Acknowledgments
+## 📚 Acknowledgements
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
