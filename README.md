@@ -1,79 +1,77 @@
 # Balarn
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Created at
-
-9 Dec 2019
-
-## Description
+## 📘 Description
 
 A Personal Final-Project in CodeCamp 2019. This project is creating for everyone who wants the money management system like a virtual wallet so you can add a virtual-wallet representative
 for the pouch, the bank account, and also everyday wallet. This project will make your life easier than before so you can manage an income and an outcome like a boss XD.
 
-## Available Scripts
+## 📦 Built With
 
-In the project directory, you can run:
+- [Ant Design](https://ant.design/) - A CSS Framework
+- [Create React App](https://github.com/facebook/create-react-app) - A Project Creator
+- [React](https://reactjs.org/) - A Frontend Framework
+- [Redux](https://redux.js.org/) - A Predictable state Container for JavaScript apps
 
-### `yarn start`
+## 🛠 Structure
 
-Runs the app in the development mode.
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```mermaid
+graph LR;
+  
+  Balarn --> Balarn-backend;
+  Balarn-backend --> Balarn;
+  Balarn-backend -->|JWT| PassportJS;
+  PassportJS -->|Authentication| Balarn-backend;
+  Balarn-backend --> Sequelize;
+  Sequelize --> Balarn-backend;
+  Sequelize --> MySQL;
+  MySQL --> Sequelize;
+```
 
-The page will reload if you make edits.
-You will also see any lint errors in the console.
+## 📋 Features
 
-### `yarn test`
+- View a virtual wallet.
+- Create, Rename and Remove the Wallet. `[Coming Soon!]`
+- Named your wallet. `[Coming Soon!]`
+- Make the transaction like deposit and withdraw. `[Coming Soon!]`
+- See history spending. `[Coming Soon!]`
+- Wallet Dashboard. `[Coming Soon!]`
+- Role managements. `[Coming Soon!]`
 
-Launches the test runner in the interactive watch mode.
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🏷 Versioning
 
-### `yarn build`
+- Current Version: 0.1.0
+- For the versions available, see the [tags on this repository.](https://github.com/buildingwatsize/balarn/tags)
 
-Builds the app for production to the `build` folder.
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 💡 Getting Started
 
-The build is minified and the filenames include the hashes.
-Your app is ready to be deployed!
+1️⃣ Clone this project by
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+  ```bash
+    git clone https://github.com/buildingwatsize/balarn.git
+  ```
 
-### `yarn eject`
+2️⃣ Run Commands
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+  ```bash
+    npm install # or just `yarn`
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+    npm start # or just `yarn start`
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+    # Default link: http://localhost:3000/
+  ```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+3️⃣ Enjoy with :D
 
-## Learn More
+## 📚 Acknowledgments
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+## 😎 Author
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Chinnawat Chimdee
 
-### Analyzing the Bundle Size
+## 🚩 Created at
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+9 Dec 2019

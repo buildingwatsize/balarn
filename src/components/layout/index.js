@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
 
 import { Layout, Menu, Icon, Row, Col, Button, Divider, Popover, Drawer } from 'antd'
 import Wallet from '../content/Wallet';
@@ -7,6 +8,10 @@ import MenuShow from '../content/MenuShow';
 import Settings from '../content/Settings';
 import Feedback from '../content/Feedback';
 import Help from '../content/Help';
+import { TOKEN } from '../../config/constants'
+
+import Axios from '../../config/api.service'
+import { actions as authAction } from '../../redux/reducers/auth'
 
 const { SubMenu } = Menu;
 const { Content, Sider } = Layout
@@ -62,7 +67,7 @@ class MainLayout extends Component {
         }
       })
     } else {
-      this.props.history.push('/')
+      this.props.signout()
     }
   }
 
@@ -80,8 +85,36 @@ class MainLayout extends Component {
 
   getContentAndRender = () => {
     let menuSelected = this.state.walletList.find((item) => item.isActive) || this.state.middleMenu.find((item) => item.isActive)
-    console.log(menuSelected)
     return menuSelected ? (menuSelected.id.split("-")[0] === "wallet" && <Wallet {...menuSelected}/>) || (menuSelected.id.split("-")[0] === "menu" && <MenuShow {...menuSelected}/>) : ""
+  }
+
+  getWallet = () => {
+    Axios.get("/wallet")
+      .then(result => {
+        console.log(result.data)
+        // this.setWallet(result.data)
+        this.setState({
+          // walletList: [...result.data, { default_item }]
+          walletList: [...result.data]
+        })
+      }).catch(err => {
+        // err.response.status
+        console.error(err)
+      })
+  }
+
+  componentDidMount = () => {
+    if (!sessionStorage.getItem(TOKEN)) {
+      window.appHistory.push("/")
+    } else {
+      this.getWallet()
+    }
+  }
+
+  componentDidUpdate = (prevProps, prevState) => {
+    if (prevProps.role !== this.props.role || this.props.role === "guest") {
+      window.appHistory.push("/")
+    }
   }
 
   render() {
@@ -181,4 +214,13 @@ class MainLayout extends Component {
   }
 }
 
-export default MainLayout
+const mapStateToProps = ({ auth }) => ({
+  role: auth.role
+})
+
+const mapDispatchToProps = {
+  ...authAction
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MainLayout)
+

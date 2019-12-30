@@ -9,7 +9,7 @@
 }
 
 .fullMinHeight {
-  min-height: 100vh;
+  min-height: 100vh !important;
 }
 
 .fullWidth {
@@ -17,7 +17,25 @@
 }
 
 .justifyCenter {
-  display: flex;
-  justify-content: center;
-  align-items: center;  
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;  
+}
+
+.textCenter,
+#signin-form {
+  text-align: center;
+}
+
+#signin-form .signin-form {
+  max-width: 300px;
+}
+#signin-form .signin-form-remember {
+  float: left;
+}
+#signin-form .signin-form-forgot {
+  float: right;
+}
+#signin-form .signin-form-button {
+  width: 100%;
 }
