@@ -11,7 +11,7 @@ export class Signin extends Component {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        console.log('Received values of form: ', values);
+        // console.log('Received values of form: ', values);
         this.signIn(values.username, values.password, values.remember)
       }
     });
@@ -24,7 +24,7 @@ export class Signin extends Component {
         this.props.signin(result.data.token)
       }).catch(err => {
         // err.response.status
-        console.error(err)
+        message.error(err.response.data.message || "Please try again later")
       })
   }
 
@@ -38,10 +38,10 @@ export class Signin extends Component {
   render() {
     const { getFieldDecorator } = this.props.form;
     return (
-      <Card id="signin-form">
+      <Card id="signin-signup-form">
         <Avatar src="OwlsomeLogo2.png" shape="square" size={200} />
         <Typography.Title level={2} className="textCenter">Sign In</Typography.Title>
-        <Form onSubmit={this.handleSubmit} className="signin-form">
+        <Form onSubmit={this.handleSubmit} className="signin-signup-form">
           <Form.Item>
             {getFieldDecorator('username', {
               rules: [{ required: true, message: 'Please input your username!' }],
@@ -66,13 +66,13 @@ export class Signin extends Component {
             {getFieldDecorator('remember', {
               valuePropName: 'checked',
               initialValue: false,
-            })(<Checkbox className="signin-form-remember">Remember me</Checkbox>)}
+            })(<Checkbox className="signin-signup-form-remember">Remember me</Checkbox>)}
 
-            <Link to="/" className="signin-form-forgot">
+            <Link to="/" className="signin-signup-form-forgot">
               Forgot password
             </Link>
 
-            <Button type="primary" htmlType="submit" className="signin-form-button">
+            <Button type="primary" htmlType="submit" className="signin-signup-form-button">
               Sign in
             </Button>
 

@@ -20,7 +20,7 @@ const isUnprotectedPath = (url) => {
 
 axios.interceptors.request.use(
   async config => {
-    console.log(config)
+    // console.log(config)
 
     if (isUnprotectedPath(config.url)) {
       return config

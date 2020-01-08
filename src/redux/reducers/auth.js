@@ -18,6 +18,11 @@ const initialState = () => {
 
 export default (state = initialState(), action) => {
   switch (action.type) {
+    case "SET_ROLE": // FOR CLEAR ROLE
+      return {
+        ...state,
+        role: action.payload.role
+      }
     case "SIGNIN":
       const token = action.payload.token
       // console.log(token)
@@ -47,6 +52,14 @@ export default (state = initialState(), action) => {
 // ####################
 
 export const actions = {
+  setRole: (role = "guest") => {
+    return {
+      type: "SET_ROLE",
+      payload: {
+        role
+      }
+    }
+  },
   signin: (token) => {
     return {
       type: "SIGNIN",

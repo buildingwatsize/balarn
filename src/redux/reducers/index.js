@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux'
 import auth from './auth'
-// import main from './main'
+import wallet from './wallet'
 
 export default combineReducers({
   auth,
-  // main
+  wallet
 })

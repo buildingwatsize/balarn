@@ -2,6 +2,18 @@
 
 /* CUSTOM */
 
+.siderPremiumBadgeFooter {
+  position: fixed;
+  left: 8px;
+  bottom: 28px;
+  width: 200px;
+  max-width: 184px; /* 200 - (2 x left) */
+  padding: 1em 0px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
 .siderFooter {
   position: fixed;
   bottom: 0;
@@ -16,26 +28,42 @@
   width: 100%;
 }
 
+.justifyStart {
+  display: flex !important;
+  justify-content: flex-start !important;
+  align-items: center !important;  
+}
+.justifyEnd {
+  display: flex !important;
+  justify-content: flex-end !important;
+  align-items: center !important;  
+}
 .justifyCenter {
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;  
 }
+.justifySpaceBetween {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;  
+}
 
 .textCenter,
-#signin-form {
+#signin-signup-form {
   text-align: center;
 }
 
-#signin-form .signin-form {
-  max-width: 300px;
+#signin-signup-form .signin-signup-form {
+  min-width: 320px;
+  max-width: 320px;
 }
-#signin-form .signin-form-remember {
+#signin-signup-form .signin-signup-form-remember {
   float: left;
 }
-#signin-form .signin-form-forgot {
+#signin-signup-form .signin-signup-form-forgot {
   float: right;
 }
-#signin-form .signin-form-button {
+#signin-signup-form .signin-signup-form-button {
   width: 100%;
 }
