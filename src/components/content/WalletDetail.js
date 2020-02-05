@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 import { Typography, Input, Row, Col, Button, Table, Tag, Statistic, Select, message, Form, Tooltip, Dropdown, Menu, Modal, Icon } from 'antd'
 
-import { b64, withCommas, } from '../../utils'
+import { b64, withCommas, exportToCSV, } from '../../utils'
 import Axios from '../../config/api.service'
 import moment from 'moment'
 import { actions as walletAction } from '../../redux/reducers/wallet'
@@ -133,6 +133,18 @@ class WalletDetail extends Component {
     }))
   }
 
+  handleClickDownloadCSV = () => {
+    if (this.state.dataSource.length) {
+      const dataColumn = Object.keys(this.state.dataSource[0])
+      const dataValues = this.state.dataSource.map(item => Object.values(item))
+      const dataLeaned = [dataColumn, ...dataValues]
+      // console.log(dataLeaned)
+      exportToCSV(dataLeaned)
+    } else {
+      message.warning("No transaction data")
+    }
+  }
+
   handleSubmitEnter = (e) => {
     // console.log(e.key);
     if (e.key === "Enter") {
@@ -158,26 +170,23 @@ class WalletDetail extends Component {
     this.setState({ mode })
   }
 
-  handleDelete = (id) => (e) => {
-    console.log(id);
-  }
+  // handleDelete = (id) => (e) => {
+  //   console.log(id);
+  // }
 
   showAddWalletDrawer = () => {
-    console.log("object")
     this.setState({
       addDrawerVisible: true
     })
   }
 
   hideAddWalletDrawer = () => {
-    console.log("object")
     this.setState({
       addDrawerVisible: false
     })
   }
 
   addWallet = (values) => {
-    console.log("object", values)
     Axios.post(`/wallet`, values)
       .then(result => {
         console.log(result.data)
@@ -309,15 +318,21 @@ class WalletDetail extends Component {
       })
   }
 
-  setDefaultWalletName = () => {
-    this.setState({
-      nameEdited: this.props.name
-    })
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (nextProps.name !== prevState.nameEdited) {
+      return { nameEdited: nextProps.name };
+    }
+    else return null;
   }
 
   componentDidMount = () => {
     this.getTransaction()
-    this.setDefaultWalletName()
+  }
+
+  componentDidUpdate = (prevProps, prevState) => {
+    if (prevProps.id !== this.props.id) {
+      this.getTransaction()
+    }
   }
 
   render() {
@@ -336,6 +351,9 @@ class WalletDetail extends Component {
         </Menu.Item>
         <Menu.Item key="refresh" onClick={() => this.getTransaction()}>
           <span><Icon type="reload" /> Refresh Wallet</span>
+        </Menu.Item>
+        <Menu.Item key="downloadCSV" onClick={() => this.handleClickDownloadCSV()}>
+          <span><Icon type="download" /> Download CSV</span>
         </Menu.Item>
         <Menu.Divider />
         <Menu.Item key="delete" style={{ backgroundColor: "crimson" }} onClick={() => this.clearAllTransaction()}>
