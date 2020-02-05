@@ -31,16 +31,17 @@ graph LR;
 ## 📋 Features
 
 - View a virtual wallet.
-- Create, Rename and Remove the Wallet. `[Coming Soon!]`
-- Named your wallet. `[Coming Soon!]`
-- Make the transaction like deposit and withdraw. `[Coming Soon!]`
-- See history spending. `[Coming Soon!]`
+- Named your wallet.
+- Make the transaction like deposit and withdraw.
+- See history spending.
+- Export the transaction as a PDF.
+- Create, Rename and Remove the Wallet. `[Premium Only]`
+- Role managements. `[Admin Only]`
 - Wallet Dashboard. `[Coming Soon!]`
-- Role managements. `[Coming Soon!]`
 
 ## 🏷 Version
 
-- Current Version: 0.1.2
+- Current Version: 0.1.3
 - For the versions available, see the [tags on this repository.](https://github.com/buildingwatsize/balarn/tags)
 
 ## 💡 Getting Started
